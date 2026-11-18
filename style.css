@@ -56,12 +56,43 @@ a { color: inherit; text-decoration: none; }
 }
 .menu.open .menu-toggle img { transform: rotate(0deg); } /* × 모양 */
 
-.brand {
+.brand { /* 가운데 정렬 (피그마 그룹 중심 = 540) */
   position: absolute;
-  left: calc(275.9 * var(--u)); top: calc(58.87 * var(--u));
+  left: 50%; top: calc(58.87 * var(--u));
+  transform: translateX(-50%);
   height: calc(50.389 * var(--u));
   display: flex; align-items: center;
 }
+.brand img { flex: none; }
+
+/* 언어 버튼 KO / ENG — 진한 동그라미가 선택된 쪽으로 이동 */
+.lang {
+  position: absolute;
+  left: calc(876.87 * var(--u)); top: calc(58.874 * var(--u));
+  width: calc(145.343 * var(--u)); height: calc(58.179 * var(--u));
+  border-radius: calc(40.18 * var(--u));
+  background: rgba(99,90,76,.5);
+}
+.lang::before {
+  content: ""; position: absolute;
+  left: calc(5 * var(--u)); top: calc(5 * var(--u));
+  width: calc(63.673 * var(--u)); height: calc(48.18 * var(--u));
+  border-radius: calc(40.18 * var(--u));
+  background: var(--brown);
+  transition: transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.lang.en::before { transform: translateX(calc(71.67 * var(--u))); }
+.lang button {
+  position: absolute; top: calc(5 * var(--u));
+  width: calc(63.673 * var(--u)); height: calc(48.18 * var(--u));
+  font-size: calc(22 * var(--u)); font-weight: 500; line-height: 1;
+  color: var(--beige);
+}
+.lang button::after { /* 터치 영역 확장 */
+  content: ""; position: absolute; inset: calc(-24 * var(--u)) 0;
+}
+.lang .lang-ko { left: calc(5 * var(--u)); }
+.lang .lang-en { left: calc(76.67 * var(--u)); }
 .brand img {
   width: calc(46.243 * var(--u)); height: calc(36.933 * var(--u));
   margin-right: calc(23.44 * var(--u));
@@ -129,6 +160,7 @@ a { color: inherit; text-decoration: none; }
   font-size: calc(50 * var(--u)); font-weight: 700;
   color: var(--brown); white-space: nowrap;
 }
+.section-title .t { text-align: center; }
 
 /* ---------- 기업 카드 (가로 스와이프) ---------- */
 .carousel {
@@ -280,8 +312,8 @@ a { color: inherit; text-decoration: none; }
 
 .back-to-list {
   position: absolute;
-  left: calc(461.65 * var(--u) - 20px); top: calc(1779.94 * var(--u));
-  transform: translateY(-50%);
+  left: 50%; top: calc(1779.94 * var(--u));
+  transform: translate(-50%, -50%);
   display: flex; align-items: center; gap: calc(26.84 * var(--u));
   padding: 12px 20px;
   font-size: calc(32.609 * var(--u)); font-weight: 500; color: var(--brown);

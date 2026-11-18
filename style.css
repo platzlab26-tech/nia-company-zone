@@ -26,7 +26,7 @@ a { color: inherit; text-decoration: none; }
   height: calc(1920 * var(--u));
   margin: 0 auto;
   overflow: hidden;
-  background: #fff;
+  background: linear-gradient(to bottom, var(--beige) 60%, #fff);
 }
 
 /* ---------- 상단 바 + 메뉴 ---------- */
@@ -109,12 +109,6 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- 하단 영역 ---------- */
-.lower {
-  position: absolute; left: 0; top: calc(756.318 * var(--u));
-  width: 100%; height: calc(1163.682 * var(--u));
-  background: linear-gradient(to bottom, var(--beige), #fff);
-}
-
 .char {
   position: absolute; top: calc(807.88 * var(--u));
   height: calc(100.555 * var(--u));

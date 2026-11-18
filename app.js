@@ -226,7 +226,6 @@
       f.type = "button";
       f.dataset.zone = key;
       if (!z.enabled) f.setAttribute("aria-disabled", "true");
-      f.appendChild(el("span", "back"));
       f.appendChild(el("span", "paper p1"));
       f.appendChild(el("span", "paper p2"));
       f.appendChild(el("span", "paper p3"));

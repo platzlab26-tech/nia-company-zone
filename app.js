@@ -125,13 +125,11 @@
       var inner = el("div", "card-inner");
       var head = el("div", "card-head");
       var names = el("div", "card-names");
-      names.appendChild(el("strong", null, c.name));
-      names.appendChild(el("span", null, c.en));
+      names.appendChild(el("strong"));
+      names.appendChild(el("span"));
       head.appendChild(names);
       if (c.logo) {
-        var logo = img("images/" + c.logo, "card-logo");
-        logo.alt = c.name + T[lang].logo;
-        head.appendChild(logo);
+        head.appendChild(img("images/" + c.logo, "card-logo"));
       } else {
         head.appendChild(el("div", "card-logo placeholder", "LOGO"));
       }
@@ -141,12 +139,24 @@
       inner.appendChild(dKo);
       inner.appendChild(dEn);
       card.appendChild(inner);
+      card._c = c;
+      fillCard(card);
       if (loop && (i < MID * n || i >= (MID + 1) * n)) card.setAttribute("aria-hidden", "true");
       carousel.appendChild(card);
     });
     carousel.scrollLeft = 0;
     if (loop) carousel.scrollLeft = centerOffset(carousel, carousel.children[MID * n]);
     updateActive(carousel);
+  }
+
+  /* 카드 이름: 한국어 화면은 한글 이름이 위(굵게), 영어 화면은 영문 이름이 위.
+     소개 문구: 한국어 화면은 국문+영문(피그마 그대로), 영어 화면은 영문만 (CSS에서 처리) */
+  function fillCard(card) {
+    var c = card._c, en = lang === "en";
+    card.querySelector(".card-names strong").textContent = en ? (c.en || c.name) : c.name;
+    card.querySelector(".card-names span").textContent = en ? c.name : c.en;
+    var logo = card.querySelector("img.card-logo");
+    if (logo) logo.alt = (en ? (c.en || c.name) : c.name) + T[lang].logo;
   }
 
   function centerOffset(carousel, card) {
@@ -371,7 +381,10 @@
       var playBtn = hero.querySelector(".play");
       if (playBtn) playBtn.setAttribute("aria-label", t.play);
     }
-    if (carousel) carousel.setAttribute("aria-label", t.companies);
+    if (carousel) {
+      carousel.setAttribute("aria-label", t.companies);
+      Array.prototype.forEach.call(carousel.querySelectorAll(".card"), fillCard);
+    }
     var back = page.querySelector(".back-to-list");
     if (back) back.lastChild.nodeValue = t.back;
     folderTexts.forEach(function (f) {

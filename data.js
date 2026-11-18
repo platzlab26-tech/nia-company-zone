@@ -14,7 +14,7 @@ window.ZONES = {
         en: "SOLIDEO",
         logo: "logo_solideo.png",
         ko: "솔리데오는 행정서비스와 공공기관 행정시스템을 구축・연계・운영하는 AI · 디지털정부 전문기업 입니다. 정부24・전자증면서부터 행정정보 공동이용・공공 마이데이터까지, 디지털 행정의 기반을 만들어갑니다.",
-        en_desc: "Solideo is a AI · digital government specialist that builds, connects and operates public services and administrative systems. From Government24 and e-Certificates to data sharing and Public MyData, it builds the foundation of AI · digital administration."
+        en_desc: "Solideo is an AI & digital government specialist that builds, connects and operates public services and the administrative systems of public institutions. From Government24 and e-Certificates to administrative data sharing and Public MyData, it lays the foundation for digital administration."
       },
       { name: "기업 2", en: "COMPANY 2", logo: null, ko: "기업 소개 문구가 들어갈 자리입니다.", en_desc: "Company description goes here." },
       { name: "기업 3", en: "COMPANY 3", logo: null, ko: "기업 소개 문구가 들어갈 자리입니다.", en_desc: "Company description goes here." }
